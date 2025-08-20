@@ -1,77 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link href="style.css" rel="Stylesheet">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Login</title>
-<style>
-    body {
-        background: linear-gradient(135deg, #ff758c, #ff7eb3);
-        font-family: 'Segoe UI', sans-serif;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-        color: white;
-    }
-    .container {
-        background: rgba(255, 255, 255, 0.1);
-        padding: 2rem;
-        border-radius: 20px;
-        width: 350px;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-        backdrop-filter: blur(10px);
-    }
-    h2 {
-        text-align: center;
-        margin-bottom: 20px;
-    }
-    input {
-        width: 100%;
-        padding: 12px;
-        margin: 10px 0;
-        border: none;
-        border-radius: 10px;
-        outline: none;
-        font-size: 1rem;
-    }
-    input[type="submit"] {
-        background: #667eea;
-        color: white;
-        font-weight: bold;
-        cursor: pointer;
-        transition: 0.3s;
-    }
-    input[type="submit"]:hover {
-        background: #5648d8;
-    }
-</style>
+<title>Register & Login</title>
 </head>
 <body>
-<div class="container">
-    <h2>Login</h2>
-    <form id="loginForm">
-        <input type="email" id="loginEmail" placeholder="Email Address" required>
-        <input type="password" id="loginPassword" placeholder="Password" required>
-        <input type="submit" value="Login">
-    </form>
+
+<div class="container" id="formContainer">
+    <!-- Registration Form -->
+    <div id="registerFormDiv">
+        <h2>Register</h2>
+        <form id="registerForm">
+            <input type="text" id="regName" placeholder="Full Name" required>
+            <input type="email" id="regEmail" placeholder="Email Address" required>
+            <input type="password" id="regPassword" placeholder="Password" required>
+            <input type="submit" value="Sign Up">
+        </form>
+        <p>Already have an account? <span class="toggle-link" onclick="showLogin()">Login</span></p>
+    </div>
+
+    <!-- Login Form -->
+    <div id="loginFormDiv" style="display:none;">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <input type="email" id="loginEmail" placeholder="Email Address" required>
+            <input type="password" id="loginPassword" placeholder="Password" required>
+            <input type="submit" value="Login">
+        </form>
+        <p>Don’t have an account? <span class="toggle-link" onclick="showRegister()">Register</span></p>
+    </div>
+
+    <!-- Welcome Section -->
+    <div id="welcome">
+        <h2>Welcome, <span id="userName"></span> 🎉</h2>
+        <p>You have successfully logged in.</p>
+        <input type="submit" value="Logout" onclick="logout()">
+    </div>
 </div>
 
-<script>
-document.getElementById("loginForm").addEventListener("submit", function(e) {
-    e.preventDefault();
-    let storedEmail = localStorage.getItem("email");
-    let storedPassword = localStorage.getItem("password");
-    let enteredEmail = document.getElementById("loginEmail").value;
-    let enteredPassword = document.getElementById("loginPassword").value;
-
-    if (enteredEmail === storedEmail && enteredPassword === storedPassword) {
-        window.open("welcome.html", "_blank");
-    } else {
-        alert("Invalid credentials. Try again!");
-    }
-});
-</script>
+<script src="script.js"></script>
 </body>
 </html>
