@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login</title>
+<style>
+    body {
+        background: linear-gradient(135deg, #ff758c, #ff7eb3);
+        font-family: 'Segoe UI', sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        color: white;
+    }
+    .container {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 2rem;
+        border-radius: 20px;
+        width: 350px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        backdrop-filter: blur(10px);
+    }
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    input {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        border: none;
+        border-radius: 10px;
+        outline: none;
+        font-size: 1rem;
+    }
+    input[type="submit"] {
+        background: #667eea;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+    input[type="submit"]:hover {
+        background: #5648d8;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h2>Login</h2>
+    <form id="loginForm">
+        <input type="email" id="loginEmail" placeholder="Email Address" required>
+        <input type="password" id="loginPassword" placeholder="Password" required>
+        <input type="submit" value="Login">
+    </form>
+</div>
+
+<script>
+document.getElementById("loginForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    let storedEmail = localStorage.getItem("email");
+    let storedPassword = localStorage.getItem("password");
+    let enteredEmail = document.getElementById("loginEmail").value;
+    let enteredPassword = document.getElementById("loginPassword").value;
+
+    if (enteredEmail === storedEmail && enteredPassword === storedPassword) {
+        window.open("welcome.html", "_blank");
+    } else {
+        alert("Invalid credentials. Try again!");
+    }
+});
+</script>
+</body>
+</html>
